@@ -1,0 +1,21 @@
+categoria,medida_categoria,nombre,detalle,precio,opciones,foto,disponible
+Tartas,26 cm,Tarta de coco,,32000,,,si
+Tartas,26 cm,Tarta cabsha,,30000,,,si
+Tartas,26 cm,Tarta de durazno,,25000,,,si
+Tartas,26 cm,Tarta de frutillas,,25000,,,si
+Tartas,26 cm,Tarta de ricota,,32000,,,si
+Tartas,26 cm,Turrón alemán,31 cm,32000,,,si
+Tartas,26 cm,Pastafrola,,27000,,,si
+Budines,20 cm,Budín de vainilla clásico,,5000,,,si
+Budines,20 cm,Budín de vainilla con chispas de chocolate y frutos secos,,6500,,,si
+Budines,20 cm,Budín de chocolate,,6000,,,si
+Budines,20 cm,Budín de chocolate con chispas de chocolate,,6500,,,si
+Budines,20 cm,Budín marmolado,,6000,,,si
+Budines,20 cm,Budín de limón clásico,,5500,,,si
+Budines,20 cm,Budín de limón con semillas de amapola,,6500,,,si
+Budines,20 cm,Budín de naranja,,5500,,,si
+Brownies,24 cm,Brownie clásico,,18000,,,si
+Brownies,24 cm,Brownie con oreos,,20000,,,si
+Brownies,24 cm,Brownie con nueces,,20000,,,si
+Alfajores de maicena,,Mini alfajores de maicena,Caja x12,8500,,,si
+Pastelitos dulces,,Mini pastelitos,Caja x12,6500,Membrillo|Batata,,si

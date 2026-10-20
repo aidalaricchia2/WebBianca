@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dolce Vita, pastelería artesanal. Armá tu pedido y envialo por WhatsApp.">
+<link rel="icon" href="logo.jpg">
+<title>Dolce Vita Catálogo</title>
+<!-- Vista previa al compartir el link (WhatsApp, Instagram, Facebook).
+     Cuando la web esté publicada, reemplazá https://TU-SITIO.netlify.app por la dirección real (ver DEPLOY.md). -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dolce Vita">
+<meta property="og:title" content="Dolce Vita · Pastelería artesanal">
+<meta property="og:description" content="Tartas, budines, brownies y más. Armá tu pedido y envialo por WhatsApp.">
+<meta property="og:url" content="https://TU-SITIO.netlify.app/">
+<meta property="og:image" content="https://TU-SITIO.netlify.app/logo.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="360">
+<meta property="og:image:height" content="360">
+<meta property="og:image:alt" content="Logo de Dolce Vita, pastelería artesanal">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dolce Vita · Pastelería artesanal">
+<meta name="twitter:description" content="Tartas, budines, brownies y más. Armá tu pedido y envialo por WhatsApp.">
+<meta name="twitter:image" content="https://TU-SITIO.netlify.app/logo.jpg">
+<meta name="theme-color" content="#F7F1EB">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Josefin+Sans:wght@400;600&family=Mulish:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <img class="logo" src="logo.jpg" alt="Dolce Vita, pastelería artesanal">
+    <span class="eyebrow">Pastelería artesanal</span>
+    <h1>Nuestros clásicos</h1>
+    <p class="lead">Elegí lo que quieras, armá tu pedido y mandalo por WhatsApp. Después coordinamos el día y la entrega.</p>
+    <p class="aviso"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Pedidos con anticipación</p>
+  </header>
+</div>
+
+<nav class="cats" aria-label="Categorías"><div class="wrap" id="chips"></div></nav>
+
+<main class="wrap" id="catalogo"></main>
+
+<div class="wrap">
+  <footer>
+    <p style="margin:0">Consultá por más variedades y precios.</p>
+    <div class="contactos">
+      <div><b>Bian</b><span>261 618 5860</span></div>
+      <div><b>Anto</b><span>261 343 3445</span></div>
+    </div>
+  </footer>
+</div>
+
+<div class="barra" id="barra" data-vacia="true">
+  <button type="button" id="abrir"><span><span class="cuenta" id="cuenta">0</span>Ver mi pedido</span><span class="tot" id="barraTotal">$0</span></button>
+</div>
+
+<div class="velo" id="velo"></div>
+<aside class="hoja" id="hoja" role="dialog" aria-modal="true" aria-labelledby="hojaTit" aria-hidden="true">
+  <div class="hoja-head"><h2 id="hojaTit">Tu pedido</h2><button class="cerrar" id="cerrar" aria-label="Cerrar">×</button></div>
+  <div class="hoja-body">
+    <ul class="items" id="items"></ul>
+    <div class="total"><span>Total</span><span id="total">$0</span></div>
+    <div class="campo">
+      <label for="nombre">Tu nombre (opcional)</label>
+      <input id="nombre" type="text" autocomplete="given-name" placeholder="Ej: Lucía">
+    </div>
+    <fieldset class="campo">
+      <legend>Enviar a</legend>
+      <div class="quien" id="quien"></div>
+    </fieldset>
+    <div>
+      <div class="preview-tit">Así le llega el mensaje</div>
+      <div class="preview" id="preview"></div>
+    </div>
+  </div>
+  <div class="hoja-foot">
+    <a class="enviar" id="enviar" href="#" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2c.2-.6.2-1.1.2-1.2l-.6-.3Z"/></svg>
+      Enviar pedido por WhatsApp
+    </a>
+    <button class="copiar" id="copiar" type="button">Copiar el mensaje</button>
+  </div>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>
