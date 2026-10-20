@@ -71,57 +71,77 @@ con una versión vieja en caché; la demora que queda es la de Google al republi
 
 ---
 
-## 4. Subir la web a Netlify (gratis)
+## 4. Publicar la web con GitHub Pages (gratis)
 
-### Opción A: arrastrando la carpeta (la más simple)
+El código está en https://github.com/aidalaricchia2/WebBianca (rama `main`, archivos en la raíz).
 
-1. Entrá a [app.netlify.com](https://app.netlify.com) y creá una cuenta (se puede con Google o email).
-2. Andá a [app.netlify.com/drop](https://app.netlify.com/drop).
-3. **Arrastrá la carpeta `dolce-vita-web`** completa a la página.
-4. En unos segundos te da un link del tipo `https://nombre-raro-123.netlify.app`.
-5. Para cambiarle el nombre: **Site configuration → Change site name** →
-   por ejemplo `dolcevita-pasteleria` → queda `https://dolcevita-pasteleria.netlify.app`.
+1. El repo tiene que ser **público** (con la cuenta gratuita, Pages no publica repos privados):
+   *Settings → General →* abajo de todo, *Danger Zone → Change visibility → Make public*.
+2. *Settings → Pages*.
+3. En **Build and deployment**:
+   - **Source:** *Deploy from a branch*.
+   - **Branch:** `main` y carpeta `/ (root)` → **Save**.
+4. En 1 o 2 minutos la web queda en:
 
-**Para actualizar el código más adelante** (no hace falta para cambiar precios ni productos):
-en el sitio, pestaña **Deploys**, arrastrá de nuevo la carpeta al recuadro
-*"Need to update your site? Drag and drop your site output folder here"*.
-
-### Opción B: con GitHub + Netlify (se actualiza solo)
-
-1. Creá un repositorio en [github.com](https://github.com/new) (puede ser privado), por ejemplo `dolce-vita-web`.
-2. Subí los archivos. Desde la terminal, dentro de la carpeta:
-
-   ```bash
-   git init
-   git add .
-   git commit -m "Catálogo Dolce Vita"
-   git branch -M main
-   git remote add origin https://github.com/TU-USUARIO/dolce-vita-web.git
-   git push -u origin main
+   ```
+   https://aidalaricchia2.github.io/WebBianca/
    ```
 
-   (O sin terminal: en la página del repo, **Add file → Upload files** y arrastrás los archivos.)
-3. En Netlify: **Add new site → Import an existing project → GitHub**, autorizá y elegí el repo.
-4. Configuración de build:
-   - **Build command:** dejalo vacío.
-   - **Publish directory:** `.` (o vacío)
-5. **Deploy**. Cada vez que subas un cambio a `main`, Netlify publica solo.
+   (El estado del deploy se ve en la pestaña **Actions** del repo.)
+
+**Para actualizar el código más adelante** (no hace falta para cambiar precios ni productos):
+
+```bash
+git add .
+git commit -m "Descripción del cambio"
+git push
+```
+
+Cada `push` a `main` vuelve a publicar la web sola.
+
+> Alternativa: Netlify también sirve (y permite repo privado). En Netlify:
+> *Add new site → Import an existing project → GitHub*, elegir el repo, build command vacío,
+> publish directory `.`. Si se cambia, hay que actualizar los meta `og:` (ver paso 6).
 
 ---
 
-## 5. Después de publicar: arreglar la vista previa del link
+## 5. (Opcional) Dominio propio
+
+1. Comprá el dominio: `.com.ar` en [nic.ar](https://nic.ar) (con clave fiscal), o `.com` en
+   cualquier registrador.
+   - NIC Argentina no administra registros DNS: delegá el dominio a un servicio de DNS
+     gratuito como [Cloudflare](https://cloudflare.com) (en *nic.ar → Delegaciones* pegás los
+     dos servidores que te da Cloudflare) y cargá los registros ahí.
+2. Registros DNS:
+
+   | Tipo | Nombre | Valor |
+   |---|---|---|
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | CNAME | `www` | `aidalaricchia2.github.io` |
+
+3. En el repo, *Settings → Pages → Custom domain*: escribí el dominio → **Save**.
+   Cuando el DNS propague (de minutos a 24 h), tildá **Enforce HTTPS**.
+4. Recomendado: verificá el dominio en *Settings de tu cuenta → Pages → Add a domain*,
+   para que nadie lo pueda usar con otro repo.
+5. Actualizá los meta `og:` con el dominio nuevo (paso 6).
+
+---
+
+## 6. Vista previa del link (WhatsApp, Instagram)
 
 WhatsApp, Instagram y Facebook necesitan la **dirección completa** de la imagen.
-En `index.html`, reemplazá `https://TU-SITIO.netlify.app` por la dirección real
-(son 3 lugares: `og:url`, `og:image` y `twitter:image`):
+En `index.html` ya están apuntando a GitHub Pages:
 
 ```html
-<meta property="og:url" content="https://dolcevita-pasteleria.netlify.app/">
-<meta property="og:image" content="https://dolcevita-pasteleria.netlify.app/logo.jpg">
-<meta name="twitter:image" content="https://dolcevita-pasteleria.netlify.app/logo.jpg">
+<meta property="og:url" content="https://aidalaricchia2.github.io/WebBianca/">
+<meta property="og:image" content="https://aidalaricchia2.github.io/WebBianca/logo.jpg">
+<meta name="twitter:image" content="https://aidalaricchia2.github.io/WebBianca/logo.jpg">
 ```
 
-Volvé a subir la carpeta (o hacé `git push`).
+Si cambiás la dirección (dominio propio u otro hosting), actualizá esas 3 líneas y hacé `git push`.
 
 Para comprobarlo, pegá el link en el
 [Depurador de Facebook](https://developers.facebook.com/tools/debug/) y tocá
@@ -135,7 +155,7 @@ así que si ya habías mandado el link antes, puede tardar en actualizarse.
 
 - [ ] La planilla está publicada como CSV y con republicación automática.
 - [ ] El link está pegado en `sheetCsvUrl` en `app.js`.
-- [ ] La web está en Netlify y abre bien en el celu.
-- [ ] Los meta `og:` apuntan a la dirección real.
+- [ ] La web está publicada en GitHub Pages y abre bien en el celu.
+- [ ] Los meta `og:` apuntan a la dirección real (si cambiaste a dominio propio).
 - [ ] Un pedido de prueba abre WhatsApp con el mensaje y el total correctos.
 - [ ] La dueña tiene acceso de edición a la planilla y una copia de `INSTRUCCIONES.md`.
