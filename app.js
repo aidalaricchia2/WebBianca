@@ -1,11 +1,12 @@
 /* ===== CONFIGURACIÓN =====
    En la web real, sheetCsvUrl apunta a la planilla publicada como CSV
-   (Archivo → Compartir → Publicar en la web → CSV). Columnas:
+   (Archivo → Compartir → Publicar en la web → CSV), o al link de "Compartir"
+   (cualquier persona con el enlace puede ver), que se convierte solo a CSV. Columnas:
    categoria | medida_categoria | nombre | detalle | precio | opciones | foto | disponible
    Si está vacío o falla, se usan los productos de abajo (DATOS).
    Cómo obtener el link: ver DEPLOY.md. Pegalo entre las comillas de sheetCsvUrl. */
 const CONFIG = {
-  sheetCsvUrl: "",
+  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/1Xg2YcJzcWCX3cfJvFA53E8PVbtoyfA0Vp_gDoEapf50/edit?usp=sharing",
   contactos: [
     { nombre: "Bian", tel: "5492616185860", visible: "261 618 5860" },
     { nombre: "Anto", tel: "5492613433445", visible: "261 343 3445" }
@@ -101,8 +102,15 @@ function normalizar(lista){
   }).filter(p=>p.nombre && p.disponible);
   return ps.map(({clave,...p})=>({categoria:nombresCat[clave], medida:medidas[clave]||"", ...p}));
 }
+/* Link de edición/compartir (…/d/ID/edit…) → descarga CSV de esa pestaña. Los publicados (…/d/e/…) quedan igual. */
+function urlCsv(url){
+  const m = url.match(/docs\.google\.com\/spreadsheets\/d\/([\w-]{20,})/);
+  if(!m) return url;
+  const gid = url.match(/[#&?]gid=(\d+)/);
+  return `https://docs.google.com/spreadsheets/d/${m[1]}/export?format=csv${gid?"&gid="+gid[1]:""}`;
+}
 async function cargarProductos(){
-  const url = limpiar(CONFIG.sheetCsvUrl);
+  const url = urlCsv(limpiar(CONFIG.sheetCsvUrl));
   if(url){
     try{
       const ctrl = new AbortController(); const espera = setTimeout(()=>ctrl.abort(), 10000);

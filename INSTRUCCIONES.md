@@ -3,9 +3,8 @@
 Todo lo que se ve en la web (productos, precios, fotos) sale de **la planilla de Google Sheets**.
 No hace falta tocar ningún archivo de la web: cambiás la planilla y listo.
 
-> ⏱️ **Los cambios tardan unos minutos en verse.** Google actualiza la versión publicada
-> cada 5 minutos, más o menos. Si cambiaste algo y no lo ves, esperá un ratito y
-> recargá la página (en el celu, deslizá hacia abajo para recargar).
+> ⏱️ **Los cambios se ven al recargar la página** (en el celu, deslizá hacia abajo para
+> recargar). Si no lo ves, esperá unos segundos y volvé a recargar.
 
 ---
 
@@ -33,7 +32,9 @@ Los productos y las categorías aparecen en la web **en el mismo orden que en la
 - **La primera fila** (la de los títulos: `categoria`, `medida_categoria`, `nombre`…).
   No la borres, no le cambies los nombres y no le agregues columnas en el medio.
   La web usa esos títulos para saber qué es cada cosa.
-- No cambies la planilla de lugar ni le saques la opción de "Publicar en la web".
+- No cambies la planilla de lugar ni le cambies cómo está compartida: tiene que seguir en
+  *"Cualquier persona con el enlace" → Lector*.
+- La pestaña de productos tiene que ser **la primera** (la de más a la izquierda).
 
 Todo lo demás lo podés cambiar tranquila. Si te equivocás, se arregla volviendo a escribir el dato.
 
@@ -132,7 +133,9 @@ No hace falta modificarlo, la web lo acomoda sola.
 
 ## Si algo sale mal
 
-- **La web muestra productos viejos:** esperá unos minutos y recargá.
+- **La web muestra productos viejos:** recargá la página. Si siguen igual, revisá que la
+  planilla siga compartida con *"Cualquier persona con el enlace"* y que la pestaña de
+  productos sea la primera.
 - **Desapareció un producto:** fijate que en **disponible** diga `si` y que tenga **nombre**.
 - **Un precio aparece en $0:** revisá que la columna **precio** tenga un número.
 - **Se rompió algo de la planilla:** en Google Sheets, **Archivo → Historial de versiones →

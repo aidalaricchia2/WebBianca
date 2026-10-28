@@ -63,6 +63,11 @@ const CONFIG = {
   ...
 ```
 
+También sirve el link de **Compartir** (*Cualquier persona con el enlace → Lector*), por ejemplo
+`https://docs.google.com/spreadsheets/d/ID/edit?usp=sharing`: la web lo convierte sola a CSV
+(`…/export?format=csv`), lee la primera pestaña (o la del `gid=` si el link lo trae) y los
+cambios se ven al instante, sin la demora de "Publicar en la web". **Es lo que usa hoy el sitio.**
+
 Guardá el archivo. Esto se hace **una sola vez**; después la dueña solo edita la planilla.
 
 Para probar: abrí `index.html` en el navegador, cambiá un precio en la planilla,
@@ -153,7 +158,7 @@ así que si ya habías mandado el link antes, puede tardar en actualizarse.
 
 ## Checklist final
 
-- [ ] La planilla está publicada como CSV y con republicación automática.
+- [ ] La planilla está compartida con "Cualquier persona con el enlace" (o publicada como CSV).
 - [ ] El link está pegado en `sheetCsvUrl` en `app.js`.
 - [ ] La web está publicada en GitHub Pages y abre bien en el celu.
 - [ ] Los meta `og:` apuntan a la dirección real (si cambiaste a dominio propio).
